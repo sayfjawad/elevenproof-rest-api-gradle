@@ -12,9 +12,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.SneakyThrows;
 import nl.multicode.elevenproof.openapi.model.BankAccountNumber;
 import nl.multicode.elevenproof.openapi.model.BurgerServiceNumber;
 import org.apache.http.HttpStatus;
@@ -61,9 +61,8 @@ public class StepDefinitions {
         assertThat(response.getStatusCode()).isEqualTo(status);
     }
 
-    @SneakyThrows
     @Then("^generated (.*) is expected to be valid$")
-    public void generatedResponseIsValidStepDefinition(String elevenproof) {
+    public void generatedResponseIsValidStepDefinition(String elevenproof) throws IOException {
 
         final var response = (Response) context.get("response");
 
@@ -85,9 +84,8 @@ public class StepDefinitions {
         }
     }
 
-    @SneakyThrows
     @Then("^validated (.*) is expected to be (.*)$")
-    public void validatedResponseIsValidStepDefinition(String elevenproof, boolean valid) {
+    public void validatedResponseIsValidStepDefinition(String elevenproof, boolean valid) throws IOException {
 
         final var response = (Response) context.get("response");
 

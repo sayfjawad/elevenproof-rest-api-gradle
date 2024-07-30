@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    alias libs.plugins.springBoot
+    alias libs.plugins.springBootDependencyManagement
+}
+
+group = 'nl.multicode.elevenproof'
+version = '1.0-SNAPSHOT'
+description = 'This module is responsible for running integration tests'
+
+dependencies {
+    implementation project(":generated")
+    implementation libs.modelmapper
+    implementation libs.springBootWeb
+    testImplementation libs.cucumberJava
+    testImplementation libs.cucumberJunitPlatformEngin
+    testImplementation libs.junitPlatformSuit
+    testImplementation libs.junitJupiter
+    testImplementation libs.restassuredAll
+    testImplementation libs.restassured
+    testImplementation libs.vaadin
+}
+
+test {
+    useJUnitPlatform()
+    exclude '**/*CucumberTest.java'
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+tasks.register('integrationTest', Test) {
+    include '**/*CucumberTest.java'
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+tasks.named('test') {
+    enabled = false
+}
+
+tasks.named('integrationTest') {
+    enabled = true
+}
