@@ -1,4 +1,4 @@
-Feature: An example
+Feature: Endpoints availability
 
   Scenario Outline: Test that all endpoints are available
     Given the application is up and running

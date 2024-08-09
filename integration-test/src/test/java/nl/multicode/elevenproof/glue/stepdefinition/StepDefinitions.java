@@ -43,7 +43,7 @@ public class StepDefinitions {
     public void anExampleScenario() {
 
         final var response = given().get(
-                ELEVENPROOF_REST_API_ENDPOINT.resolve("/api/swagger-ui/index.html"));
+                ELEVENPROOF_REST_API_ENDPOINT.resolve("/swagger-ui/index.html"));
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
     }
 
