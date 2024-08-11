@@ -30,7 +30,7 @@ test {
 }
 
 tasks.register('integrationTest', Test) {
-    include '**/*CucumberTest.java'
+    include '**/RunCucumberTest.java'
     useJUnitPlatform()
     testLogging {
         events 'passed', 'skipped', 'failed'
@@ -38,7 +38,7 @@ tasks.register('integrationTest', Test) {
 }
 
 tasks.named('test') {
-    enabled = false
+    enabled = true
 }
 
 tasks.named('integrationTest') {
