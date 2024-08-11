@@ -38,7 +38,7 @@ tasks.register('integrationTest', Test) {
 }
 
 tasks.named('test') {
-    enabled = true
+    enabled = false
 }
 
 tasks.named('integrationTest') {
